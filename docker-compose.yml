@@ -1,0 +1,6 @@
+services:
+  gamevault:
+    image: ${DOCKER_REGISTRY-}gamevault
+    build:
+      context: .
+      dockerfile: GameVault/Dockerfile
