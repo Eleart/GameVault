@@ -1,9 +1,11 @@
+using GameVault.Authentication;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GameVault.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+[ServiceFilter(typeof(ApiKeyAuthFilter))]
 public class WeatherForecastController : ControllerBase
 {
     private static readonly string[] Summaries = new[]
