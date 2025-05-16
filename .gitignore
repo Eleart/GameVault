@@ -399,3 +399,6 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+ GameVault/appsettings.Development.json
+/GameVault/appsettings.Development.json
