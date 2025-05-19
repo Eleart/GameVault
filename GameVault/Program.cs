@@ -1,5 +1,6 @@
 using GameVault.Authentication;
-using Microsoft.OpenApi.Models;
+using GameVault.Database;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,8 @@ builder.Services.AddSwaggerGen(c =>
 
     c.AddSecurityRequirement(SwaggerConfiguration.Requirement);
 });
+builder.Services.AddDbContextPool<GameContext>(opt =>
+    opt.UseNpgsql(builder.Configuration.GetConnectionString("GameContext")));
 
 builder.Services.AddScoped<ApiKeyAuthFilter>();
 var app = builder.Build();
