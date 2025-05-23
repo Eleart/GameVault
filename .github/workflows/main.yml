@@ -1,4 +1,4 @@
-name: GameVault cd
+name: GameVault
 
 on:
   push:
