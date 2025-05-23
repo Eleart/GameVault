@@ -15,7 +15,7 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_PASSWORD: Ravindra@123
+      POSTGRES_PASSWORD: poufpouf
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
