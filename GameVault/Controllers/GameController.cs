@@ -26,7 +26,7 @@ public class GameController
         return game;
     }
 
-    [HttpPost("getallgames")]
+    [HttpGet("getallgames")]
     public async Task<List<Game>> GetGames()
     {
         return await _gameContext.Games.ToListAsync();
