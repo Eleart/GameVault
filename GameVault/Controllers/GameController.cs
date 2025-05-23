@@ -8,7 +8,6 @@ namespace GameVault.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-[ServiceFilter(typeof(ApiKeyAuthFilter))]
 public class GameController
 {
     private readonly GameContext _gameContext;
@@ -18,6 +17,7 @@ public class GameController
     }
 
     [HttpPost("create")]
+    [ServiceFilter(typeof(ApiKeyAuthFilter))]
     public async Task<Game> CreateGame(Game game)
     {
         game.Id = Guid.NewGuid();
@@ -27,8 +27,16 @@ public class GameController
     }
 
     [HttpGet("getallgames")]
+    [ServiceFilter(typeof(ApiKeyAuthFilter))]
     public async Task<List<Game>> GetGames()
     {
         return await _gameContext.Games.ToListAsync();
+    }
+
+    [HttpGet("hc")]
+    [ServiceFilter(typeof(ApiKeyAuthFilter))]
+    public string HealthCheck()
+    {
+        return "Ok";
     }
 }
