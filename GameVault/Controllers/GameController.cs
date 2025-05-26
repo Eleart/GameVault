@@ -32,11 +32,4 @@ public class GameController
     {
         return await _gameContext.Games.ToListAsync();
     }
-
-    [HttpGet("hc")]
-    [ServiceFilter(typeof(ApiKeyAuthFilter))]
-    public string HealthCheck()
-    {
-        return "Ok";
-    }
 }
