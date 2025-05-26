@@ -21,6 +21,10 @@ builder.Services.AddDbContextPool<GameContext>(opt =>
 builder.Services.AddScoped<ApiKeyAuthFilter>();
 var app = builder.Build();
 
+using var serviceScope = app.Services.GetService<IServiceScopeFactory>().CreateScope();
+var context = serviceScope.ServiceProvider.GetRequiredService<GameContext>();
+context.Database.Migrate();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
