@@ -47,4 +47,5 @@ jobs:
           port: 22
           script: |
             cd game-vault/
+            docker compose pull
             docker compose up -d
