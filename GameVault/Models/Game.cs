@@ -8,5 +8,5 @@ public class Game
     public Guid Id { get; set; }
     public required string Name { get; set; }
     public required string Plateform { get; set; }
-    public States State{ get; set; }
+    public States State { get; set; }
 }

@@ -1,19 +1,18 @@
 services:
   gamevault:
-    image: ${DOCKER_REGISTRY-}gamevault
+    build: ./gameVault/
     container_name: game_vault_api
-    build:
-      context: .
-      dockerfile: GameVault/Dockerfile
+    environment:
+      - ConnectionStrings__GameContext=Host=db;Database=GameDb;Username=postgres;Password=poufpouf;Port=5432;
+      - Authentication__ApiKey=b6dfbce7-f4ab-411b-b4c4-569b17d90d82
     ports:
-      - 8080:8080
+      - 8090:8080
     depends_on:
       - "db"
+    command: ["dotnet", "ef", "database update"]
   db:
     image: postgres
     container_name: postgres_db
-    ports:
-      - 5432:5432
     environment:
       POSTGRES_PASSWORD: poufpouf
     volumes:
